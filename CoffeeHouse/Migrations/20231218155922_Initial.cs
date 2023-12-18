@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Windows.Documents;
-using CoffeeHouse.Models;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -35,8 +32,8 @@ namespace CoffeeHouse.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Table = table.Column<int>(type: "integer", nullable: false),
                     CustomerAmount = table.Column<int>(type: "integer", nullable: false),
-                    Dishes = table.Column<List<Dish>>(type: "_dishes", nullable: false),
-                    Status = table.Column<OrderStatus>(type: "order_status", nullable: false)
+                    Dishes = table.Column<string[]>(type: "text[]", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,8 +49,8 @@ namespace CoffeeHouse.Migrations
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
                     Patronymic = table.Column<string>(type: "text", nullable: true),
-                    Role = table.Column<Role>(type: "employee_role", nullable: false),
-                    Status = table.Column<EmployeeStatus>(type: "employee_status", nullable: false),
+                    Role = table.Column<string>(type: "text", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: false),
                     AccountId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>

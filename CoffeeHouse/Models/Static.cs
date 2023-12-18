@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeHouse.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace CoffeeHouse.Models
 {
-    internal enum OrderStatus
+    internal class Static
     {
-        Accepted,
-        Cooking,
-        Ready,
-        Paid
+        public static Role UserRole { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeHouse.Models
 {
-    internal enum Dish
+    public enum Dish
     {
         Ratatouille,
         CoqAuVin,

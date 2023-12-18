@@ -1,4 +1,7 @@
 ﻿using CoffeeHouse.Data;
+using CoffeeHouse.Models;
+using CoffeeHouse.Models.Enum;
+using CoffeeHouse.Models.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +20,11 @@ using System.Windows.Shapes;
 namespace CoffeeHouse.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Home.xaml
+    /// Логика взаимодействия для ChefOrders.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class ChefOrders : Page
     {
-        public Home()
+        public ChefOrders()
         {
             InitializeComponent();
         }
@@ -30,11 +33,11 @@ namespace CoffeeHouse.Pages
         {
             TaskDataGrid.Columns[0].Header = "№";
             TaskDataGrid.Columns[0].Width = DataGridLength.Auto;
-            TaskDataGrid.Columns[1].Header = "Блюда";
+            TaskDataGrid.Columns[1].Header = "Столик";
             TaskDataGrid.Columns[1].Width = DataGridLength.Auto;
-            TaskDataGrid.Columns[2].Header = "Столик";
+            TaskDataGrid.Columns[2].Header = "Кол-во людей";
             TaskDataGrid.Columns[2].Width = DataGridLength.Auto;
-            TaskDataGrid.Columns[3].Header = "Кол-во людей";
+            TaskDataGrid.Columns[3].Header = "Блюда";
             TaskDataGrid.Columns[3].Width = DataGridLength.Auto;
             TaskDataGrid.Columns[4].Header = "Статус";
             TaskDataGrid.Columns[4].Width = DataGridLength.Auto;
@@ -42,24 +45,23 @@ namespace CoffeeHouse.Pages
         private void ViewDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             DataGrid DG = sender as DataGrid;
-            //Model.Task row = (Model.Task)(sender as DataGrid).SelectedItems[0];
+            OrderView row = (OrderView)(sender as DataGrid).SelectedItems[0];
 
-            //NavigationManager.MainFrame.Navigate(new Add(row));
+            NavigationManager.RootFrame.Navigate(new ChefOrderUpdate(row));
 
         }
-
+        
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             using (Context db = new Context())
             {
-                TaskDataGrid.ItemsSource = db.Order.ToList();
+                var data = db.Order.ToList();
+
+                TaskDataGrid.ItemsSource = OrderViewHelpers.GetOrderViewList(data)
+                    .Where(o => o.Status != OrderStatus.Paid)
+                    .ToList();
             }
             SetupDataGrid();
-        }
-
-        private void CreateOrderButton_Click(object sender, RoutedEventArgs e)
-        {
-            //NavigationManager.RootFrame.Navigate(new CreateTask());
         }
     }
 }

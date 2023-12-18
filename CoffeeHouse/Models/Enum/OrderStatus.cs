@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoffeeHouse.Models
+namespace CoffeeHouse.Models.Enum
 {
-    internal enum Role
+    public enum OrderStatus
     {
-        Administrator,
-        Chef,
-        Waiter
+        Accepted,
+        Cooking,
+        Ready,
+        Paid
     }
 }

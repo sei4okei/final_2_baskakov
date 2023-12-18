@@ -14,10 +14,8 @@ namespace CoffeeHouse.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string? Patronymic { get; set; }
-        [Column(TypeName = "employee_role")]
-        public Role Role { get; set; }
-        [Column(TypeName = "employee_status")]
-        public EmployeeStatus Status { get; set; }
+        public string Role { get; set; }
+        public string Status { get; set; }
         [ForeignKey("AccountId")]
         public Account Account { get; set; }
         public int AccountId { get; set; }

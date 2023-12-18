@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoffeeHouse.Models
+namespace CoffeeHouse.Models.Enum
 {
-    internal enum EmployeeStatus
+    public enum EmployeeStatus
     {
         Hired,
         Fired

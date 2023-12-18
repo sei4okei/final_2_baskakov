@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CoffeeHouse.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231217212856_Initial")]
+    [Migration("20231218155922_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,11 +67,13 @@ namespace CoffeeHouse.Migrations
                     b.Property<string>("Patronymic")
                         .HasColumnType("text");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("employee_role");
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("employee_status");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -91,12 +93,13 @@ namespace CoffeeHouse.Migrations
                     b.Property<int>("CustomerAmount")
                         .HasColumnType("integer");
 
-                    b.Property<byte[]>("Dishes")
+                    b.Property<string[]>("Dishes")
                         .IsRequired()
-                        .HasColumnType("_dishes");
+                        .HasColumnType("text[]");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("order_status");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("Table")
                         .HasColumnType("integer");

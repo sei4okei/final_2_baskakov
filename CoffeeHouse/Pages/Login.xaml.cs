@@ -1,4 +1,6 @@
 ﻿using CoffeeHouse.Data;
+using CoffeeHouse.Models;
+using CoffeeHouse.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +39,11 @@ namespace CoffeeHouse.Pages
                     if (account.Password.Equals(PasswordTextBox.Password) &&
                         account.Login.Equals(LoginTextBox.Text)) 
                     {
+                        Static.UserRole = StringToEnum(db.Employee
+                            .Where(e => e.AccountId == account.Id)
+                            .Select(e => e.Role)
+                            .FirstOrDefault());
+
                         Navigate();
                     }
                     else
@@ -51,9 +58,38 @@ namespace CoffeeHouse.Pages
             }
         }
 
+        private Role StringToEnum(string str)
+        {
+            if (str == "Administrator")
+            {
+                return Role.Administrator;
+            }
+            if (str == "Waiter")
+            {
+                return Role.Waiter;
+            }
+
+            return Role.Chef;
+        }
+
         private void Navigate()
         {
-            NavigationManager.RootFrame.Navigate(new Home());
+            switch (Static.UserRole)
+            {
+                case Role.Administrator:
+                    {
+                        break;
+                    }
+                case Role.Waiter:
+                    {
+                        break;
+                    }
+                default:
+                    {
+                        NavigationManager.RootFrame.Navigate(new ChefOrders());
+                        break;
+                    }
+            }
         }
 
         private void ErrorMessage()

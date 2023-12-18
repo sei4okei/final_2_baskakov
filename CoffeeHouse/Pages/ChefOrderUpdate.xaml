@@ -1,0 +1,54 @@
+﻿<Page x:Class="CoffeeHouse.Pages.ChefOrderUpdate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CoffeeHouse.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="ChefOrderUpdate">
+
+    <StackPanel Margin="40">
+        <Label Content="№ Заказа"/>
+        <TextBox x:Name="IdTextBox"
+                 Height="45"
+                 Width="200"
+                 FontSize="20"
+                 HorizontalAlignment="Left"
+                 IsReadOnly="True"/>
+        <Label Content="Номер столика"/>
+        <TextBox x:Name="TableTextBox"
+                 Height="45"
+                 Width="200"
+                 FontSize="20"
+                 HorizontalAlignment="Left"
+                 IsReadOnly="True"/>
+        <Label Content="Кол-во посетителей"/>
+        <TextBox x:Name="CustomersTextBox"
+                 Height="45"
+                 Width="200"
+                 FontSize="20"
+                 HorizontalAlignment="Left"
+                 IsReadOnly="True"/>
+        <Label Content="Заказ"/>
+        <TextBox x:Name="DishesTextBox"
+                 Height="45"
+                 Width="200"
+                 FontSize="24"
+                 HorizontalAlignment="Left"
+                 IsReadOnly="True"/>
+        <Label Content="Статус"/>
+        <ComboBox x:Name="StatusComboBox"
+                 Height="45"
+                 Width="200"
+                 FontSize="24"
+                 HorizontalAlignment="Left"/>
+        <Button x:Name="UpdateTaskButton"
+                Click="UpdateTaskButton_Click"
+                Content="Обновить статус"
+                Height="45"
+                Width="200"
+                HorizontalAlignment="Left"
+                Margin="0, 25"/>
+    </StackPanel>
+</Page>
