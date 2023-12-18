@@ -78,10 +78,12 @@ namespace CoffeeHouse.Pages
             {
                 case Role.Administrator:
                     {
+                        NavigationManager.RootFrame.Navigate(new AdministratorOrders());
                         break;
                     }
                 case Role.Waiter:
                     {
+                        NavigationManager.RootFrame.Navigate(new WaiterOrders());
                         break;
                     }
                 default:
